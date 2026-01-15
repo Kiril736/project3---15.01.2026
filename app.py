@@ -1,28 +1,29 @@
 import streamlit as st
 import pandas as pd
 
-st.title("🎨 Любими неща – класна анкета")
+st.title("Оценка на ученика")
 
 if "colors" not in st.session_state:
     st.session_state.colors = {
-        "Червен": 0,
-        "Син": 0,
-        "Зелен": 0,
-        "Жълт": 0
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0
     }
 
 if "sports" not in st.session_state:
     st.session_state.sports = {
-        "Футбол": 0,
-        "Баскетбол": 0,
-        "Волейбол": 0,
-        "Плуване": 0
+        "Мартин": 0,
+        "Георги": 0,
+        "Димитър": 0,
+        "Иван": 0
     }
 
 st.subheader("Избери любими неща")
 
-color = st.selectbox("Любим цвят:", list(st.session_state.colors.keys()))
-sport = st.selectbox("Любим спорт:", list(st.session_state.sports.keys()))
+color = st.selectbox("Оценка:", list(st.session_state.colors.keys()))
+sport = st.selectbox("Ученици:", list(st.session_state.sports.keys()))
 
 if st.button("Запази избора"):
     st.session_state.colors[color] += 1
@@ -33,13 +34,13 @@ st.divider()
 
 st.subheader("📊 Резултати")
 
-st.write("Любими цветове")
+st.write("Оценка")
 colors_df = pd.DataFrame.from_dict(
     st.session_state.colors, orient="index", columns=["Брой"]
 )
 st.bar_chart(colors_df)
 
-st.write("Любими спортове")
+st.write("Ученик")
 sports_df = pd.DataFrame.from_dict(
     st.session_state.sports, orient="index", columns=["Брой"]
 )
