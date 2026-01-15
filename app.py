@@ -16,6 +16,7 @@ if "sports" not in st.session_state:
     st.session_state.sports = {
         "Мартин": 0,
         "Георги": 0,
+        "Васил": 0,
         "Димитър": 0,
         "Иван": 0
     }
